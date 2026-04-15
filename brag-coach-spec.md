@@ -68,10 +68,10 @@ This is Satisfi's existing visitor experience agent. We are not redesigning it. 
 - User bubble: #333
 - Prompt pills: 1.5px solid #666 border, #ddd text, 50px radius
 - Avatar: 80px circle with dashed #f56115 (DC Electric Orange) border, "?" in orange, "Coach" label
-- All body text: Noto Sans, 14px
-- Display text (scattered words, READY SET BRAG, labels): IBM Plex Mono Bold
+- All text: IBM Plex Mono (bot messages at 13px, prompts at 12px, display elements in Bold)
+- The monospace treatment is a deliberate contrast with travel mode's Noto Sans
 
-**Welcome state shows:** the coach avatar circle surrounded by scattered brand voice words (UNAPOLOGETIC, BOLD, CLEVER, PROUD, PASSIONATE) at various angles and sizes in DC's secondary colors. Below the circle: "READY. SET." in small caps, "BRAG" in large IBM Plex Mono Bold, and "Your Cleveland trash talk machine" in green (#5dd57a).
+**Welcome state shows:** the coach avatar circle surrounded by scattered brand voice words (UNAPOLOGETIC, BOLD, CLEVER, PROUD, PASSIONATE) at various angles and sizes in DC's secondary colors. Below the circle: "READY. SET." in small caps, "BRAG" in large IBM Plex Mono Bold, and "Your Cleveland trash talk machine" in green (#5dd57a), IBM Plex Mono.
 
 Below that, 4 prompt buttons whose text changes depending on which DC page the widget appears on.
 
@@ -198,11 +198,11 @@ Every time a message is appended to the messages area, the panel scrolls to the 
 
 ## Typography
 
-**Noto Sans** (loaded from Google Fonts): All readable body text. Bot messages, user messages, intro paragraphs, prompt button labels, mode button text. Weights: 400, 500, 600, 700.
+**Noto Sans** (loaded from Google Fonts): Travel mode body text, intro paragraphs, mode button text. Weights: 400, 500, 600, 700.
 
-**IBM Plex Mono** (loaded from Google Fonts): Display elements and labels only. The scattered brand voice words. "READY. SET. BRAG." The coach and agent labels. The input field placeholder. Loading micro-copy. Copy buttons. The "Ready to paste" DM label. The options bar (prototype only). Weights: 400, 500, 700.
+**IBM Plex Mono** (loaded from Google Fonts): All brag mode text. Bot messages, user messages, prompt buttons, scattered brand voice words, "READY. SET. BRAG.", coach and agent labels, input field placeholder, loading micro-copy, copy buttons, the "Ready to paste" DM label. Weights: 400, 500, 700.
 
-Both modes use the same fonts. There is no font difference between travel and brag mode body text.
+The two modes have intentionally different typographic voices. Travel mode uses Noto Sans for a clean, approachable feel that matches the existing Satisfi widget. Brag mode uses IBM Plex Mono throughout for a grittier, more opinionated personality. The monospace face makes brag responses feel like they were typed with intent, not generated.
 
 ---
 
@@ -221,9 +221,9 @@ The golden brown (#c4792b) on the "Chat with Brag Coach" button is not a DC bran
 
 ---
 
-## What Satisfi Needs to Implement
+## Implementation Notes for Satisfi
 
-This prototype is a visual and behavioral spec. It uses hardcoded responses. Satisfi's production build needs to:
+This prototype serves as a visual and behavioral reference. The hardcoded responses stand in for what Satisfi's AI backend will generate in production. The following notes describe what the production build would need:
 
 1. Replicate the dual-panel layout within their widget framework
 2. Use the mode bar pattern (single button outside both panels) for switching
@@ -234,7 +234,7 @@ This prototype is a visual and behavioral spec. It uses hardcoded responses. Sat
 7. Match the Satisfi CSS variables for travel mode (they already have these)
 8. Apply the brag mode color scheme and typography
 
-Things we cannot control from the prototype:
+Areas where Satisfi's platform expertise will determine the best approach:
 - Knowledge base content (determines response quality)
 - Response classification (caption vs comeback vs DM vs deflection)
 - Prompt rotation logic and timing
@@ -245,7 +245,6 @@ Things we cannot control from the prototype:
 
 ## Open Questions
 
-- [ ] "READY. SET. BRAG." tagline: confirmed by DC?
 - [ ] Widget width in production: 607px or Satisfi's standard 425px?
 - [ ] Can Satisfi detect the host page URL and change prompts per page?
 - [ ] What response metadata does Satisfi return? Can we use it for format detection?
