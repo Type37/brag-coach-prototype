@@ -200,9 +200,9 @@ Every time a message is appended to the messages area, the panel scrolls to the 
 
 **Noto Sans** (loaded from Google Fonts): Travel mode body text, intro paragraphs, mode button text. Weights: 400, 500, 600, 700.
 
-**IBM Plex Mono** (loaded from Google Fonts): All brag mode text. Bot messages, user messages, prompt buttons, scattered brand voice words, "READY. SET. BRAG.", coach and agent labels, input field placeholder, loading micro-copy, copy buttons, the "Ready to paste" DM label. Weights: 400, 500, 700.
+**IBM Plex Mono** (loaded from Google Fonts): The text entry field in brag mode, prompt buttons, scattered brand voice words, "READY. SET. BRAG.", "Your Cleveland trash talk machine," coach and agent labels, loading micro-copy, copy buttons, the "Ready to paste" DM label. Weights: 400, 500, 700.
 
-The two modes have intentionally different typographic voices. Travel mode uses Noto Sans for a clean, approachable feel that matches the existing Satisfi widget. Brag mode uses IBM Plex Mono throughout for a grittier, more opinionated personality. The monospace face makes brag responses feel like they were typed with intent, not generated.
+Bot responses in both modes use Noto Sans. Readability wins over branding when someone is actually reading a paragraph of generated content. The IBM Plex personality lives in the input field (where the user types), the prompt buttons (where the user chooses), and the display elements (where the brand speaks). The responses themselves need to be as easy to read as possible because they're going to be copied and pasted somewhere else.
 
 ---
 
