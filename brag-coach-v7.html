@@ -201,15 +201,15 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
           <div class="b-sub">Your Cleveland trash talk machine</div>
         </div>
       </div>
-      <button class="mode-btn to-travel" onclick="switchMode('travel')">\u2190 Back to Travel Assistant</button>
+      <button class="mode-btn to-travel" onclick="switchMode('travel')">← Back to Travel Assistant</button>
       <div class="b-prompts" id="bragPrompts"></div>
-      <div class="back-strip" id="backStrip"><a onclick="switchMode('travel')">\u2190 Switch to Travel Assistant</a></div>
+      <div class="back-strip" id="backStrip"><a onclick="switchMode('travel')">← Switch to Travel Assistant</a></div>
       <div class="msgs hidden" id="bragMsgs"></div>
     </div>
   </div>
   <div class="w-input">
     <input class="inp" id="inp" placeholder="How can I help you?" onkeydown="if(event.key==='Enter')send()">
-    <button class="snd-btn" onclick="send()">\u2191</button>
+    <button class="snd-btn" onclick="send()">↑</button>
   </div>
   <div class="powered">Powered By Satisfi Labs</div>
 </div>
