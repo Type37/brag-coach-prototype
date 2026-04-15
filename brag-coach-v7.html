@@ -26,7 +26,7 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 
 /* PANELS */
 .panels{position:relative;flex:1;overflow:hidden;z-index:1}
-.panel{position:absolute;inset:0;overflow-y:auto;display:flex;flex-direction:column}
+.panel{position:absolute;inset:0;overflow-y:auto;display:grid;grid-template-rows:180px 120px auto 1fr}
 .panel::-webkit-scrollbar{width:4px}
 .panel::-webkit-scrollbar-thumb{border-radius:2px}
 .panel.travel{background:#F5F5F5;z-index:2}
@@ -46,7 +46,7 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 .widget.use-wipe.brag-mode .panel.travel{clip-path:inset(0 100% 0 0)}
 
 /* WELCOME CONTENT: fixed height so button lands in same spot */
-.welcome-content{display:flex;flex-direction:column}
+.panel-bottom{overflow-y:auto;padding:0}
 
 /* MODE BUTTON: identical styling base, different colors */
 .mode-btn{display:block;margin:0 20px 12px;padding:14px;text-align:center;border-radius:50px;font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:none;flex-shrink:0}
@@ -56,17 +56,17 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 .mode-btn.to-travel:hover{border-color:#fff;color:#fff}
 
 /* TRAVEL */
-.t-agent-stage{width:100%;height:180px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.t-agent-stage{display:flex;align-items:center;justify-content:center}
 .t-agent{width:90px;height:90px;border-radius:50%;border:2px solid #2d6bf1;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff}
 .t-agent-q{font-family:"IBM Plex Mono",monospace;font-size:32px;font-weight:700;color:#2d6bf1}
 .t-agent-label{font-family:"IBM Plex Mono",monospace;font-size:9px;color:#2d6bf1;margin-top:2px;text-transform:uppercase;letter-spacing:.1em}
-.t-intro{padding:16px 20px;font-size:14px;line-height:1.6;color:#333;flex:1}
+.t-intro{padding:12px 20px;font-size:14px;line-height:1.6;color:#333;overflow:hidden;display:flex;align-items:center}
 .t-prompts{padding:0 20px 20px;display:flex;flex-wrap:wrap;gap:8px}
 .t-pr{padding:10px 18px;border-radius:50px;border:none;background:#2d6bf1;color:#fff;font-family:'Noto Sans',sans-serif;font-size:14px;cursor:pointer}
 .t-pr:hover{background:#1f4caf}
 
 /* BRAG WELCOME */
-.b-stage{position:relative;height:180px;width:100%;flex-shrink:0}
+.b-stage{position:relative;width:100%}
 .b-coach{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;border:2px dashed #f56115;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1a1a}
 .b-coach-q{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:700;color:#f56115}
 .b-coach-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#f56115;margin-top:2px;text-transform:uppercase;letter-spacing:.1em}
@@ -80,7 +80,7 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 .b-w4{bottom:15px;right:18px;font-size:15px;transform:rotate(7deg);color:#2d6cf0}
 .b-w5{top:70px;left:14px;font-size:10px;transform:rotate(-12deg);color:#eb3b26}
 
-.b-text{text-align:center;padding:0 20px;flex:1;display:flex;flex-direction:column;justify-content:center}
+.b-text{text-align:center;padding:0 20px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .b-ready{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:#aaa}
 .b-name{font-family:'IBM Plex Mono',monospace;font-size:42px;font-weight:700;color:#fff;line-height:1}
 .b-sub{font-size:13px;color:#5dd57a;margin:6px 0 0}
@@ -172,12 +172,11 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
   </div>
   <div class="panels">
     <div class="panel travel" id="panelTravel">
-      <div class="welcome-content">
-        <div class="t-agent-stage"><div class="t-agent"><span class="t-agent-q">DC</span><div class="t-agent-label">Travel Agent</div></div></div>
-        <div class="t-intro">Hi there! You know those places only the locals know? Let our Destination Cleveland virtual assistant or a live CLE Concierge help you find them with suggestions on things to do, events to attend, restaurants, maps, and other tips.</div>
-      </div>
+      <div class="t-agent-stage"><div class="t-agent"><span class="t-agent-q">DC</span><div class="t-agent-label">Travel Agent</div></div></div>
+      <div class="t-intro">Hi there! You know those places only the locals know? Let our Destination Cleveland virtual assistant or a live CLE Concierge help you find them with suggestions on things to do, events to attend, restaurants, maps, and other tips.</div>
       <button class="mode-btn to-brag" onclick="switchMode('brag')">Chat with Brag Coach</button>
-      <div class="t-prompts">
+      <div class="panel-bottom">
+        <div class="t-prompts">
         <button class="t-pr" onclick="travelTap('Things to Do')">Things to Do</button>
         <button class="t-pr" onclick="travelTap('Events')">Events</button>
         <button class="t-pr" onclick="travelTap('2026 Brewery Passport')">2026 Brewery Passport</button>
@@ -186,27 +185,28 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
         <button class="t-pr" onclick="travelTap('Chat With Live CLE Concierge')">Chat With Live CLE Concierge</button>
       </div>
       <div class="msgs hidden" id="travelMsgs"></div>
+      </div>
     </div>
     <div class="panel brag" id="panelBrag">
-      <div class="welcome-content">
-        <div class="b-stage">
+      <div class="b-stage">
           <span class="b-word b-w1">Unapologetic</span>
           <span class="b-word b-w2">Bold</span>
           <span class="b-word b-w3">Clever</span>
           <span class="b-word b-w4">Proud</span>
           <span class="b-word b-w5">Passionate</span>
           <div class="b-coach" id="bragCoach"><div class="b-coach-q">?</div><div class="b-coach-label">Coach</div></div>
-        </div>
-        <div class="b-text">
+      </div>
+      <div class="b-text">
           <div class="b-ready">READY. SET.</div>
           <div class="b-name">BRAG</div>
           <div class="b-sub">Your Cleveland trash talk machine</div>
-        </div>
       </div>
       <button class="mode-btn to-travel" onclick="switchMode('travel')">← Back to Travel Agent</button>
+      <div class="panel-bottom">
       <div class="b-prompts" id="bragPrompts"></div>
       <div class="back-strip" id="backStrip"><a onclick="switchMode('travel')">← Switch to Travel Agent</a></div>
       <div class="msgs hidden" id="bragMsgs"></div>
+      </div>
     </div>
   </div>
   <div class="w-input">
