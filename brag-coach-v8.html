@@ -74,13 +74,8 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 .panel.brag::-webkit-scrollbar-thumb{background:#555}
 
 /* Paper texture */
-.widget.paper-bg .panel.travel{
-  background-color:#F5F5F5;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
-  background-size:200px 200px;
-  background-repeat:repeat
-}
+.widget.paper-noise .panel.travel{background-image:url(paper-texture.jpg);background-size:100px;background-repeat:repeat}
+.widget.paper-warm .panel.travel{background-color:#F3F0EB}
 .widget.dark-tex-a .panel.brag{background-image:url(guardian-texture-pB.svg);background-repeat:repeat;background-size:360px auto}
 .widget.dark-tex-b .panel.brag{background-image:url(guardian-texture-B-texture.svg);background-repeat:repeat;background-size:160px auto}
 .widget.dark-tex-c .panel.brag{background-image:url(guardian-texture-C-warm.svg);background-repeat:repeat;background-size:160px auto}
@@ -239,7 +234,8 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
   <div class="sep"></div>
   <span class="lb">Texture</span>
   <select onchange="setTexture(this.value)">
-    <option value="on" selected>Paper</option>
+    <option value="noise" selected>Paper</option>
+    <option value="warm">Warm White</option>
     <option value="off">Off</option>
   </select>
 
@@ -257,7 +253,7 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 </div>
 
 <!-- WIDGET -->
-<div class="widget use-slide paper-bg dark-tex-a" id="W">
+<div class="widget use-slide paper-noise dark-tex-a" id="W">
   <div class="wipe-bar" id="wipeBar"></div>
 
   <!-- HEADER -->
@@ -368,7 +364,12 @@ function setView(v){
   var w=document.getElementById("W");
   w.classList.toggle("mobile-view",v==="mobile");
 }
-function setTexture(v){document.getElementById('W').classList.toggle('paper-bg',v==='on')}
+function setTexture(v){
+  var w=document.getElementById('W');
+  w.classList.remove('paper-noise','paper-warm');
+  if(v==='noise') w.classList.add('paper-noise');
+  if(v==='warm') w.classList.add('paper-warm');
+}
 function toggleMin(){document.getElementById('W').classList.toggle('minimized')}
 
 // === MODE SWITCHING ===
