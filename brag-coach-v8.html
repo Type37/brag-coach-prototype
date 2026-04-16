@@ -27,6 +27,8 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
   display:flex;flex-direction:column;
   box-shadow:#bbb 0 0 10px;margin-top:10px;
 }
+/* MOBILE VIEW */
+.widget.mobile-view{width:375px;height:calc(100vh - 58px);max-height:none;border-radius:0}
 .widget.minimized .mode-bar,.widget.minimized .panels,.widget.minimized .w-input,.widget.minimized .powered{display:none}
 .widget.minimized{height:auto;min-height:0;max-height:none}
 
@@ -72,7 +74,7 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 .panel.brag::-webkit-scrollbar-thumb{background:#555}
 
 /* Paper texture */
-.widget.paper-bg .panel.travel{background-image:url(paper-texture.jpg);background-size:2400px auto;background-position:center;background-repeat:repeat}
+.widget.paper-bg .panel.travel{background-image:url(paper-texture.jpg);background-size:300px auto;background-position:center;background-repeat:repeat}
 .widget.dark-tex-a .panel.brag{background-image:url(guardian-texture-pB.svg);background-repeat:repeat;background-size:360px auto}
 .widget.dark-tex-b .panel.brag{background-image:url(guardian-texture-B-texture.svg);background-repeat:repeat;background-size:160px auto}
 .widget.dark-tex-c .panel.brag{background-image:url(guardian-texture-C-warm.svg);background-repeat:repeat;background-size:160px auto}
@@ -226,6 +228,9 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
   <div class="sep"></div>
   <button onclick="window.open('https://type37.github.io/brag-coach-prototype/brag-coach-spec.md','_blank')" style="background:#2d6bf1;border-color:#2d6bf1;color:#fff">SPEC</button>
   <div class="sep"></div>
+  <span class="lb">View</span>
+  <select onchange="setView(this.value)"><option value="desktop">Desktop</option><option value="mobile">Mobile</option></select>
+  <div class="sep"></div>
   <span class="lb">Dark Tex</span>
   <select onchange="setDarkTex(this.value)">
     <option value="a" selected>Guardian</option>
@@ -330,6 +335,10 @@ function setDarkTex(v){
   var w=document.getElementById("W");
   w.classList.remove("dark-tex-a","dark-tex-b","dark-tex-c");
   if(v!=="off") w.classList.add("dark-tex-"+v);
+}
+function setView(v){
+  var w=document.getElementById("W");
+  w.classList.toggle("mobile-view",v==="mobile");
 }
 function setTexture(v){document.getElementById('W').classList.toggle('paper-bg',v==='on')}
 function toggleMin(){document.getElementById('W').classList.toggle('minimized')}
