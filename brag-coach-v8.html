@@ -82,8 +82,6 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 .panel.brag::-webkit-scrollbar-thumb{background:#555}
 
 /* Paper texture */
-.widget.paper-noise .panel.travel{background-image:url(paper-texture.jpg);background-size:cover;background-position:center}
-.widget.paper-warm .panel.travel{background-color:#F3F0EB}
 .widget.dark-tex-a .panel.brag{background-image:url(guardian-texture-pB.svg);background-repeat:repeat;background-size:360px auto}
 .widget.dark-tex-b .panel.brag{background-image:url(guardian-texture-B-texture.svg);background-repeat:repeat;background-size:160px auto}
 .widget.dark-tex-c .panel.brag{background-image:url(guardian-texture-C-warm.svg);background-repeat:repeat;background-size:160px auto}
@@ -233,13 +231,6 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
     <option value="wipe">Wipe</option>
   </select>
   <div class="sep"></div>
-  <span class="lb">Texture</span>
-  <select onchange="setTexture(this.value)">
-    <option value="noise" selected>Paper</option>
-    <option value="warm">Warm White</option>
-    <option value="off">Off</option>
-  </select>
-
   <div class="sep"></div>
   <span class="lb">View</span>
   <select onchange="setView(this.value)"><option value="desktop">Desktop</option><option value="mobile">Mobile</option></select>
@@ -260,7 +251,7 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
   <button onclick="setMascot('dog',this)" title="Dog"><img src="mascot-dog.png" alt="Dog"></button>
   <button onclick="setMascot('mega',this)" title="Megaphone"><img src="mascot-megaphone.png" alt="Megaphone"></button>
 </div>
-<div class="widget use-slide paper-noise dark-tex-a" id="W">
+<div class="widget use-slide dark-tex-a" id="W">
   <div class="wipe-bar" id="wipeBar"></div>
 
   <!-- HEADER -->
@@ -374,13 +365,7 @@ function setView(v){
   var w=document.getElementById("W");
   w.classList.toggle("mobile-view",v==="mobile");
 }
-function setTexture(v){
-  var w=document.getElementById('W');
-  w.classList.remove('paper-noise','paper-warm');
-  if(v==='noise') w.classList.add('paper-noise');
-  if(v==='warm') w.classList.add('paper-warm');
-}
-function toggleMin(){document.getElementById('W').classList.toggle('minimized')}
+
 
 // === MODE SWITCHING ===
 function doSwitch(){
