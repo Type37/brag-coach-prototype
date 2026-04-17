@@ -28,6 +28,7 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
   box-shadow:#bbb 0 0 10px;margin-top:10px;
 }
 /* FLOATING MASCOT PICKER */
+.widget-wrap{position:relative;display:inline-block}
 .mascot-picker{position:absolute;left:-52px;top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:6px}
 .mascot-picker button{width:42px;height:42px;border-radius:50%;border:2px solid #333;background:#111;cursor:pointer;padding:0;overflow:hidden;opacity:0.6;transition:opacity .2s,border-color .2s}
 .mascot-picker button:hover{opacity:1;border-color:#666}
@@ -253,6 +254,12 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
 </div>
 
 <!-- WIDGET -->
+<div class="widget-wrap">
+<div class="mascot-picker" id="mascotPicker">
+  <button class="active" onclick="setMascot('none',this)" title="Default"><span class="mp-none">?</span></button>
+  <button onclick="setMascot('dog',this)" title="Dog"><img src="mascot-dog.png" alt="Dog"></button>
+  <button onclick="setMascot('mega',this)" title="Megaphone"><img src="mascot-megaphone.png" alt="Megaphone"></button>
+</div>
 <div class="widget use-slide paper-noise dark-tex-a" id="W">
   <div class="wipe-bar" id="wipeBar"></div>
 
@@ -265,13 +272,6 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
   <!-- MODE BAR (single button, never inside panels) -->
   <div class="mode-bar">
     <button class="mode-btn to-brag" id="modeBtn" onclick="doSwitch()">Chat with Brag Coach</button>
-  </div>
-
-  <!-- MASCOT PICKER (floating left) -->
-  <div class="mascot-picker" id="mascotPicker">
-    <button class="active" onclick="setMascot('none',this)" title="Default"><span class="mp-none">?</span></button>
-    <button onclick="setMascot('dog',this)" title="Dog"><img src="mascot-dog.png" alt="Dog"></button>
-    <button onclick="setMascot('mega',this)" title="Megaphone"><img src="mascot-megaphone.png" alt="Megaphone"></button>
   </div>
 
   <!-- PANELS -->
@@ -314,6 +314,7 @@ body{font-family:'Noto Sans',sans-serif;background:#e8e8e8;display:flex;flex-dir
     <button class="snd" onclick="send()">&#8593;</button>
   </div>
   <div class="powered">Powered By Satisfi Labs</div>
+</div>
 </div>
 
 <script>
